@@ -23,7 +23,7 @@
 <meta property="og:url" content="http://yoursite.com/2018/01/07/Linux/index.html">
 <meta property="og:site_name" content="诗和远方">
 <meta property="og:description" content="fstab文件数字解析 dump 工具通过它决定何时作备份. dump 会检查其内容，并用数字来决定是否对这个文件系统进行备份。 允许的数字是 0 和 1 。0 表示忽略， 1 则进行备份。大部分的用户是没有安装 dump 的 ，对他们而言  应设为 0。    fsck 读取  的数值来决定需要检查的文件系统的检查顺序。允许的数字是0, 1, 和2。 根目录应当获得最高的优先权 1, 其它所有需">
-<meta property="og:updated_time" content="2018-01-07T05:22:51.777Z">
+<meta property="og:updated_time" content="2018-01-07T05:30:33.975Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux">
 <meta name="twitter:description" content="fstab文件数字解析 dump 工具通过它决定何时作备份. dump 会检查其内容，并用数字来决定是否对这个文件系统进行备份。 允许的数字是 0 和 1 。0 表示忽略， 1 则进行备份。大部分的用户是没有安装 dump 的 ，对他们而言  应设为 0。    fsck 读取  的数值来决定需要检查的文件系统的检查顺序。允许的数字是0, 1, 和2。 根目录应当获得最高的优先权 1, 其它所有需">
@@ -81,14 +81,19 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/01/07/Linux/" data-id="cjc4c19yk0000840q6mur69up" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/01/07/Linux/" data-id="cjc4cb7nl0000600qq4r1eiup" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
     <div class="entry-content">
       
         <h2 id="fstab文件数字解析"><a href="#fstab文件数字解析" class="headerlink" title="fstab文件数字解析"></a>fstab文件数字解析</h2><p> dump 工具通过它决定何时作备份. dump 会检查其内容，并用数字来决定是否对这个文件系统进行备份。 允许的数字是 0 和 1 。0 表示忽略， 1 则进行备份。大部分的用户是没有安装 dump 的 ，对他们而言 <dump> 应设为 0。  </dump></p>
-<p> fsck 读取 <pass> 的数值来决定需要检查的文件系统的检查顺序。允许的数字是0, 1, 和2。 根目录应当获得最高的优先权 1, 其它所有需要被检查的设备设置为 2. 0 表示设备不会被 fsck 所检查。<br> <a href="http://blog.csdn.net/richerg85/article/details/17917129" target="_blank" rel="noopener">详细讲解</a></pass></p>
+<p> fsck 读取 <pass> 的数值来决定需要检查的文件系统的检查顺序。允许的数字是0, 1, 和2。 根目录应当获得最高的优先权 1, 其它所有需要被检查的设备设置为 2. 0 表示设备不会被 fsck 所检查。<br> <a href="http://blog.csdn.net/richerg85/article/details/17917129" target="_blank" rel="noopener">详细讲解</a>  </pass></p>
+<h2 id="释放缓存"><a href="#释放缓存" class="headerlink" title="释放缓存"></a>释放缓存</h2><ul>
+<li>To free pagecache:<br>echo 1 &gt; /proc/sys/vm/drop_caches</li>
+<li>To free dentries and inodes:<br>echo 2 &gt; /proc/sys/vm/drop_caches</li>
+<li>To free pagecache, dentries and inodes:<br>echo 3 &gt; /proc/sys/vm/drop_caches<br>说明，释放前最好sync一下，防止丢数据。</li>
+</ul>
 
       
     </div><!-- .entry-content -->
